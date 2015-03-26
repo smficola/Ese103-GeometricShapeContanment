@@ -1,0 +1,139 @@
+package geometricshapes;
+
+public class Rectangle extends GeometricShape {
+	protected double xV;
+	protected double yV;
+	protected double xSideLenght;
+	protected double ySideLenght;
+	/**
+	 * @param xV
+	 * @param yV
+	 * @param xSideLenght
+	 * @param ySideLenght
+	 */
+	public Rectangle(double xV, double yV, double xSideLenght,
+			double ySideLenght) {
+		super();
+		this.xV = xV;
+		this.yV = yV;
+		if(xSideLenght>0 && ySideLenght>0)
+		{
+			this.xSideLenght = xSideLenght;
+			this.ySideLenght = ySideLenght;
+		}
+		else
+		{
+			throw new IllegalArgumentException("The value of a must be biggest from 0.");
+		}
+	}
+	@Override
+	public String toString() {
+		return "Rectangle [xV=" + xV + ", yV=" + yV + ", xSideLenght="
+				+ xSideLenght + ", ySideLenght=" + ySideLenght + "]";
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(xSideLenght);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(xV);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(ySideLenght);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(yV);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rectangle other = (Rectangle) obj;
+		if (Double.doubleToLongBits(xSideLenght) != Double
+				.doubleToLongBits(other.xSideLenght))
+			return false;
+		if (Double.doubleToLongBits(xV) != Double.doubleToLongBits(other.xV))
+			return false;
+		if (Double.doubleToLongBits(ySideLenght) != Double
+				.doubleToLongBits(other.ySideLenght))
+			return false;
+		if (Double.doubleToLongBits(yV) != Double.doubleToLongBits(other.yV))
+			return false;
+		return true;
+	}
+	public double getxV() {
+		return xV;
+	}
+	public void setxV(double xV) {
+		this.xV = xV;
+	}
+	public double getyV() {
+		return yV;
+	}
+	public void setyV(double yV) {
+		this.yV = yV;
+	}
+	public double getxSideLenght() {
+		return xSideLenght;
+	}
+	public void setxSideLenght(double xSideLenght) {
+		if(xSideLenght>0)
+		{
+		this.xSideLenght = xSideLenght;
+		}
+		else
+		{
+			throw new IllegalArgumentException("The value of a must be biggest from 0.");
+		}
+	}
+	public double getySideLenght() {
+		return ySideLenght;
+	}
+	public void setySideLenght(double ySideLenght) {
+		if(ySideLenght>0)
+		{
+			this.ySideLenght = ySideLenght;
+		}
+		else
+		{
+			throw new IllegalArgumentException("The value of a must be biggest from 0.");
+		}
+		
+	}
+	@Override
+	public double getXMin()
+	{
+		return this.xV;
+	}
+	@Override
+	public double getYMin()
+	{
+		return this.yV;
+	}
+	@Override
+	public double getXMax()
+	{
+		return this.xV + xSideLenght;
+		
+	}
+	@Override
+	public double getYMax()
+	{
+		return this.yV + ySideLenght;
+	}
+	
+
+}
+
